@@ -192,16 +192,16 @@ function updateGameObjects() {
 	const enemies = gameObjects.filter((go) => go.type === 'Enemy');
 	const lasers = gameObjects.filter((go) => go.type === 'Laser');
 	// laser hit something
-	lasers.forEach((l) => {
-		enemies.forEach((m) => {
-			if (intersectRect(l.rectFromGameObject(), m.rectFromGameObject())) {
-				eventEmitter.emit(Messages.COLLISION_ENEMY_LASER, {
-					first: l,
-					second: m,
-				});
-			}
-		});
-	});
+	// lasers.forEach((l) => {
+	// 	enemies.forEach((m) => {
+	// 		if (intersectRect(l.rectFromGameObject(), m.rectFromGameObject())) {
+	// 			eventEmitter.emit(Messages.COLLISION_ENEMY_LASER, {
+	// 				first: l,
+	// 				second: m,
+	// 			});
+	// 		}
+	// 	});
+	// });
 
 	gameObjects = gameObjects.filter((go) => !go.dead);
 }
@@ -246,7 +246,7 @@ function initGame() {
 
 window.onload = async () => {
 	canvas = document.getElementById('canvas');
-	ctx = canvas.getContext('2d');
+	// ctx = canvas.getContext('2d');
 	heroImg = await loadTexture('assets/player.png');
 	enemyImg = await loadTexture('assets/enemyShip.png');
 	laserImg = await loadTexture('assets/laserRed.png');
